@@ -4,20 +4,16 @@ body {
   background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
-  padding: 0 10px;
 }
 
 .container {
   position: relative;
   display: inline-block;
-  max-width: 90%;
-  text-align: center;
 }
 
 .card {
@@ -28,25 +24,27 @@ body {
   text-align: center;
   position: relative;
   z-index: 2;
-  transition: all 0.3s ease;
 }
 
 .mensaje {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: 5rem;
   color: white;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
   margin: 0;
   pointer-events: none;
   animation: palpitar 2.5s infinite;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 @keyframes palpitar {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
   }
+
   50% {
     transform: scale(1.07);
     text-shadow: 3px 3px 12px rgba(173, 173, 173, 0.9);
@@ -60,7 +58,6 @@ body {
   background: radial-gradient(circle at center, #ffd9009d, #ff8c00ce);
   border-radius: 50%;
   z-index: 1;
-  transition: all 0.3s ease;
 }
 
 .sol.ocultando {
@@ -71,7 +68,7 @@ body {
 }
 
 .mensaje-final {
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-size: 2rem;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -95,43 +92,4 @@ body {
 .mensaje-final.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* 📱 --- Ajustes Responsive --- */
-@media (max-width: 768px) {
-  body {
-    background-position: center;
-    background-attachment: scroll;
-    padding: 0 15px;
-  }
-
-  .card {
-    padding: 25px 30px;
-  }
-
-  .sol {
-    width: 100px;
-    height: 100px;
-  }
-
-  .mensaje {
-    letter-spacing: 2px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    padding: 20px 25px;
-    border-radius: 15px;
-  }
-
-  .sol {
-    width: 80px;
-    height: 80px;
-  }
-
-  .mensaje-final {
-    font-size: 1.1rem;
-    padding: 8px 15px;
-  }
 }
