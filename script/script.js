@@ -4,17 +4,26 @@ const texto = "Bendecido sábado niña 💕";
 const duration = 5000;
 const startTime = performance.now();
 
-const radius = Math.min(window.innerWidth, window.innerHeight) * 0.4;
+function getResponsiveRadius() {
+  const minSide = Math.min(window.innerWidth, window.innerHeight);
+  return minSide * 0.4;
+}
 
-const centerX = window.innerWidth / 1.8;
-const centerY = window.innerHeight / 4 + radius / 2;
+function getCenter() {
+  return {
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 3
+  };
+}
+
+let { x: centerX, y: centerY } = getCenter();
+let radius = getResponsiveRadius();
 
 function animateSol(currentTime) {
   const elapsed = currentTime - startTime;
   const progress = Math.min(elapsed / duration, 1);
 
   const angle = -Math.PI / 2 + (Math.PI / 2) * progress;
-
   const x = centerX + radius * Math.cos(angle);
   const y = centerY + radius * Math.sin(angle);
 
@@ -25,7 +34,6 @@ function animateSol(currentTime) {
     requestAnimationFrame(animateSol);
   } else {
     sol.classList.add("ocultando");
-
     setTimeout(() => {
       escribirTexto(mensajeFinal, texto);
     }, 800);
@@ -47,3 +55,8 @@ function escribirTexto(elemento, texto, velocidad = 80) {
 }
 
 requestAnimationFrame(animateSol);
+
+window.addEventListener("resize", () => {
+  radius = getResponsiveRadius();
+  ({ x: centerX, y: centerY } = getCenter());
+});
